@@ -13,10 +13,21 @@ function Bucket(props) {
   const submitUpdate = (value) => {
 
     // TODO: Write logic to update the `edit` value in state after a user updates an entry in the list
-
-    setEdit()
-    // TODO: Set the key:value pairs in the `edit` object back to empty strings
+    // Update the bucket list with the new item
+    setEdit({
+      id: value.id,
+      value: value.value,
+      eagerness: value.eagerness, 
+    })
     
+  // Update the `edit` value in state
+
+    // TODO: Set the key:value pairs in the `edit` object back to empty strings
+    setEdit({
+      id: null,
+      value: '',
+      eagerness: '',
+    });
   };
 
   // If the user is attempting to edit an item, render the bucket form with the edit variable passed as a prop
@@ -31,8 +42,9 @@ function Bucket(props) {
     <div className={`${item.complete }`} key={index}>
 
       // TODO: Add an onClick event that invokes the `completeBucketItem` method passing the item id as a argument
-      <div key={index} onClick={}>
+      <div key={index} onClick={() => completeBucketItem(item.id)}>
           {/* TODO: Add the item text here */}
+          {item.text}
       </div>
       <div className="icons">
         // TODO: Add an onClick event update the `edit` object with the `id`, `value`, and `eagerness` properties

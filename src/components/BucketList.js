@@ -7,7 +7,11 @@ function BucketList() {
 
   // Function to add a bucket list item
   const addBucketItem = (item) => {
-    return setBucket((bucket.push(item)))
+
+    let addedBucket = bucket;
+    addedBucket.push(item);
+
+    return setBucket(addedBucket)
     // TODO: Write logic to add the new bucket item to the bucket state variable
     
   };
@@ -15,11 +19,12 @@ function BucketList() {
   // Function to mark bucket list item as complete
   const completeBucketItem = (id) => {
     // If the ID passed to this function matches the ID of the item that was clicked, mark it as complete
-    let updatedBucket = bucket.map((item) => {
+    let updatedBucket = bucket;
+    updatedBucket.map((item) => {
       if(item.id == id){
         //"mark that item as complete"
         //item.complete = true;
-        return {...item, complete: true }
+        item.complete = true;
       }
       // TODO: Write logic that marks an item as complete or incomplete when invoked
       return item;
@@ -31,7 +36,8 @@ function BucketList() {
   // Function to remove bucket list item and update state
   const removeBucketItem = (id) => {
     // TODO: Write logic that will return an array of items that don't contain the ID passed to this function
-    let removeBucket = bucket.filter((item) => item.id !== id);
+    let removeBucket = bucket;
+    let removeBucket.filter((item) => item.id !== id);
     //it's an array
     //we can use "filter" to remove items from an array.$
 
